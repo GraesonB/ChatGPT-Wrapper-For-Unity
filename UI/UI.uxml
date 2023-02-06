@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/styles.uss?fileID=7433441132597879392&amp;guid=e4e6fc18cf9c741eabbefb47d56297e8&amp;type=3#styles" />
+    <ui:VisualElement name="container" style="height: 746px; align-items: center; justify-content: space-between; background-color: rgb(28, 32, 42);">
+        <ui:GroupBox style="flex-direction: row; width: 100%; justify-content: center; padding-top: 20px;">
+            <ui:Label display-tooltip-when-elided="true" name="chatgpt-text" class="text-input text-box" style="background-color: rgb(49, 56, 72); padding-left: 15px; padding-right: 15px; padding-top: 10px; padding-bottom: 10px; white-space: normal;" />
+        </ui:GroupBox>
+        <ui:VisualElement name="box" style="width: 700px; height: 280px; justify-content: center; align-items: center;">
+            <ui:GroupBox style="flex-direction: row; width: 100%; justify-content: center;">
+                <ui:TextField picking-mode="Ignore" name="input-text" class="text-input text-box" style="background-color: rgba(43, 23, 23, 0); height: auto; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; white-space: normal;" />
+                <ui:Button text="Send" display-tooltip-when-elided="true" name="request1" enable-rich-text="true" class="btn" style="width: auto;" />
+            </ui:GroupBox>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

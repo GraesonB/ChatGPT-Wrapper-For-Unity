@@ -1,0 +1,116 @@
+#CommandInput #unity-text-input {
+    --unity-cursor-color: rgb(255, 255, 255);
+}
+
+
+.btn {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgb(87, 79, 195);
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    border-bottom-color: rgba(255, 255, 255, 0);
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    -unity-background-image-tint-color: rgb(28, 103, 29);
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-slice-left: 10;
+    -unity-slice-top: 10;
+    -unity-slice-right: 10;
+    -unity-slice-bottom: 10;
+    background-image: none;
+    color: rgb(243, 243, 246);
+    width: 200px;
+    -unity-font-style: normal;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: rgb(100, 92, 214);
+}
+
+.text-box {
+    width: 50%;
+    background-color: rgb(49, 56, 72);
+    -unity-background-image-tint-color: rgb(28, 103, 29);
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-slice-left: 10;
+    -unity-slice-top: 10;
+    -unity-slice-right: 10;
+    -unity-slice-bottom: 10;
+    background-image: none;
+    color: rgb(197, 180, 184);
+    height: auto;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.text-box > .unity-base-text-field__input {
+    border-width: 0;
+    margin: 0;
+    background-color: rgb(49, 56, 72);
+    color: rgb(243, 243, 246);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.text-input {
+    width: 50%;
+    background-color: rgb(49, 56, 72);
+    -unity-background-image-tint-color: rgb(28, 103, 29);
+    -unity-background-scale-mode: scale-to-fit;
+    --unity-cursor-color: rgb(243,243,246);
+    -unity-slice-left: 10;
+    -unity-slice-top: 10;
+    -unity-slice-right: 10;
+    -unity-slice-bottom: 10;
+    background-image: none;
+    color: rgb(243, 243, 246);
+    height: auto;
+    border-left-color: rgb(49, 56, 72);
+    border-right-color: rgb(49, 56, 72);
+    border-top-color: rgb(49, 56, 72);
+    border-bottom-color: rgb(49, 56, 72);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.text-input:focus {
+    width: 50%;
+    height: auto;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left-color: rgb(63, 72, 91);
+    border-right-color: rgb(63, 72, 91);
+    border-top-color: rgb(63, 72, 91);
+    border-bottom-color: rgb(63, 72, 91);
+}
