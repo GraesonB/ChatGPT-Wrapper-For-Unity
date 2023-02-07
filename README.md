@@ -19,7 +19,7 @@ This project does not include the model name for ChatGPT's unreleased API, you'l
 Congrats, now whenever your new UnityEvent is invoked, a request will be sent to ChatGPT's API, and whatever is subscribed to ChatGPT's response will be notified as soon as a response is received. Have fun!
 
 
-Here's a screenshot of a demo I put together with a simple UI. The UI files are included in the repo, however, you'll have to setup the UnityEvents yourself. If anyone is interested I can also upload the whole project file.
+Here's a screenshot of a demo I put together with a simple UI. The UI files are included in the repo, however, you'll have to setup the UnityEvents and plugin the UI elements yourself. If anyone is interested I can also upload the whole project file.
 ![Screenshot 2023-02-05 at 10 47 13 PM](https://user-images.githubusercontent.com/89364458/216893256-efe3d9e2-fb7d-4833-bae5-9dcb0e9d5717.png)
 
 
