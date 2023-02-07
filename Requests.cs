@@ -20,6 +20,8 @@ namespace ChatGPTWrapper {
             UnityWebRequest webRequest = new UnityWebRequest(uri, "GET");
             if (headers != null) SetHeaders(ref webRequest, headers);
             webRequest.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
+            webRequest.disposeUploadHandlerOnDispose = true;
+            webRequest.disposeDownloadHandlerOnDispose = true;
 
             yield return webRequest.SendWebRequest();
 
@@ -37,6 +39,7 @@ namespace ChatGPTWrapper {
                     callback(responseJson);
                     break;
             }
+            webRequest.Dispose();
             
         }
 
@@ -48,6 +51,9 @@ namespace ChatGPTWrapper {
             byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
             webRequest.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
             webRequest.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+            webRequest.disposeDownloadHandlerOnDispose = true;
+            webRequest.disposeUploadHandlerOnDispose = true;
+
             yield return webRequest.SendWebRequest();
 
             switch (webRequest.result)
@@ -64,6 +70,8 @@ namespace ChatGPTWrapper {
                     callback(responseJson);
                     break;
             }
+
+            webRequest.Dispose();
         }
     }
 }
