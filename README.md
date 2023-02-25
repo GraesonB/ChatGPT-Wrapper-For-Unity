@@ -1,8 +1,11 @@
 # ChatGPT Unity Wrapper
 A Unity wrapper for ChatGPT's unofficially launched official API. This wrapper serves as an easy-to-use tool for those looking to explore ChatGPT applications in game development.
 
-🚨***IMPORTANT NOTE***🚨 <br>
-This project does not include the model name for ChatGPT's unreleased API, you'll have to find that on the web yourself. If you can't find it, this wrapper also include's Open AI's Davinci GPT-3 model as an option. Davinci is a very capable model and can serve as a placeholder for you until the full release of ChatGPT's API.
+## 🚨***IMPORTANT NOTE***🚨 <br>
+\<2023-02-25\> <br/>
+As of right now, OpenAI has moved the unreleased model name to something else, and to my knowledge no one has found the new model name. In other words, we are stuck with Davinci until the full release of ChatGPT.
+
+~This project does not include the model name for ChatGPT's unreleased API, you'll have to find that on the web yourself.~ This wrapper also include's Open AI's Davinci GPT-3 model as an option. Davinci is a very capable model and can serve as a placeholder for you until the full release of ChatGPT's API.
 
 ## Guide
 1. Either download the zip and extract it into an existing Unity project, or clone the repo into your project's Assets directory.
