@@ -8,7 +8,7 @@ namespace ChatGPTWrapper {
     {
         [Header("Parameters")]
         [SerializeField]
-        private string _apiKey;
+        private string _apiKey = null;
 
         enum Model {
             ChatGPT,
@@ -16,8 +16,8 @@ namespace ChatGPTWrapper {
             Curie
         }
         [SerializeField]
-        private Model _model;
-        private string _selectedModel;
+        private Model _model = Model.Davinci;
+        private string _selectedModel = null;
         [SerializeField]
         private int _maxTokens = 3072;
         [SerializeField]
@@ -28,15 +28,25 @@ namespace ChatGPTWrapper {
         
 
         private Requests requests = new Requests();
-        private Prompt _prompt = new Prompt();
+        private Prompt _prompt;
         private string _lastUserMsg;
         private string _lastChatGPTMsg;
 
+        [Header("Prompt")]
+        [SerializeField]
+        private string _chatbotName = "ChatGPT";
+
+        [TextArea(4,6)]
+        [SerializeField]
+        private string _initialPrompt = "You are ChatGPT, a large language model trained by OpenAI.";
+
         [Space(15)]
-        public UnityEvent<string> chatGPTResponse = new UnityEvent<string>();
+        public UnityStringEvent chatGPTResponse = new UnityStringEvent();
+
 
         private void OnEnable()
         {
+            _prompt = new Prompt(_chatbotName, _initialPrompt);
             _reqHeaders = new List<(string, string)>
             { 
                 ("Authorization", $"Bearer {_apiKey}"),
@@ -70,7 +80,7 @@ namespace ChatGPTWrapper {
 
                 StartCoroutine(requests.PostReq<ChatGPTRes>(_uri, json, ResolveResponse, _reqHeaders));
             } else {
-                Debug.Log
+                Debug.LogError
                 (
                     "It looks like you haven't setup the model name for ChatGPT's API."
                     + " Either select a different model, or add ChatGPT's model name in ChatGPTConversation's OnEnable()" 

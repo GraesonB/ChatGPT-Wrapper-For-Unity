@@ -25,6 +25,7 @@ namespace ChatGPTWrapper {
 
             yield return webRequest.SendWebRequest();
 
+            #if UNITY_2020_3_OR_NEWER
             switch (webRequest.result)
             {
                 case UnityWebRequest.Result.ConnectionError:
@@ -39,6 +40,18 @@ namespace ChatGPTWrapper {
                     callback(responseJson);
                     break;
             }
+            #else
+            if(!string.IsNullOrWhiteSpace(webRequest.error))
+            {
+                Debug.LogError($"Error {webRequest.responseCode} - {webRequest.error}");
+                yield break;
+            }
+            else
+            {
+                var responseJson = JsonUtility.FromJson<T>(webRequest.downloadHandler.text);
+                    callback(responseJson);
+            }
+            #endif
             webRequest.Dispose();
             
         }
@@ -56,6 +69,7 @@ namespace ChatGPTWrapper {
 
             yield return webRequest.SendWebRequest();
 
+            #if UNITY_2020_3_OR_NEWER
             switch (webRequest.result)
             {
                 case UnityWebRequest.Result.ConnectionError:
@@ -70,6 +84,18 @@ namespace ChatGPTWrapper {
                     callback(responseJson);
                     break;
             }
+            #else
+            if(!string.IsNullOrWhiteSpace(webRequest.error))
+            {
+                Debug.LogError($"Error {webRequest.responseCode} - {webRequest.error}");
+                yield break;
+            }
+            else
+            {
+                var responseJson = JsonUtility.FromJson<T>(webRequest.downloadHandler.text);
+                    callback(responseJson);
+            }
+            #endif
 
             webRequest.Dispose();
         }
