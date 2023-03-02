@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace ChatGPTWrapper {
     [Serializable]
-    public class ChatGPTRes
+    public class GPTRes
     {
         public string id;
-        public List<Choices> choices;
+        public List<GPTChoices> choices;
 
     }
 }

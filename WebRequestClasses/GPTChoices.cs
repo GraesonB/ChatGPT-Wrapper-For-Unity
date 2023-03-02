@@ -2,7 +2,7 @@
 
 namespace ChatGPTWrapper {
     [Serializable]
-    public class Choices
+    public class GPTChoices
     {
         public string text;
     }
