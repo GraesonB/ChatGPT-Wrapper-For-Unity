@@ -1,23 +1,18 @@
 # ChatGPT Unity Wrapper
-A Unity wrapper for ChatGPT's unofficially launched official API. This wrapper serves as an easy-to-use tool for those looking to explore ChatGPT applications in game development.
-
-## 🚨***IMPORTANT NOTE***🚨 <br>
-\<2023-02-25\> <br/>
-As of right now, OpenAI has moved the unreleased model name to something else, and to my knowledge no one has found the new model name. In other words, we are stuck with Davinci until the full release of ChatGPT.
-
-~This project does not include the model name for ChatGPT's unreleased API, you'll have to find that on the web yourself.~ This wrapper also include's Open AI's Davinci GPT-3 model as an option. Davinci is a very capable model and can serve as a placeholder for you until the full release of ChatGPT's API.
+A Unity wrapper for ChatGPT's official API. This wrapper serves as an easy-to-use tool for those looking to explore ChatGPT applications in game development.
 
 ## Guide
-1. Either download the zip and extract it into an existing Unity project, or clone the repo into your project's Assets directory.
+1. Either download the zip and extract it into an existing Unity project, or clone the repo into your project's Assets directory. <br>
+  If you are using a version of Unity that does not support Unity's UI Toolkit, you can just delete the whole UI folder as it's not required.
 
 2. Create an empty game object, and add the "ChatGPTConversation" script to it.
-![Screenshot 2023-02-05 at 10 27 48 PM](https://user-images.githubusercontent.com/89364458/216890753-4b35b810-5f3e-4212-9591-024968d289ad.png)
+![Screenshot 2023-03-01 at 8 41 26 PM](https://user-images.githubusercontent.com/89364458/222325449-47a833a6-9f10-4583-a78d-69aef54b7e3d.png)
 
 3. Add your API key (you can generate your own key on OpenAI's website), and set your parameters.
 
-4. Use the UnityEvent below the parameters to subscribe something to ChatGPT's response (likely a function/method that takes a string as an argument).
+4. Use the UnityEvent below the parameters to subscribe something to ChatGPT's response (a function/method that takes a string as an argument).
 
-5. Create a UnityEvent<string> somewhere else in your project, and add ChatGPTConversation's method "SendToChatGPT" to the newly created event.
+5. Create a UnityStringEvent somewhere else in your project, and add ChatGPTConversation's method "SendToChatGPT" to the newly created event.
 
 Congrats, now whenever your new UnityEvent is invoked, a request will be sent to ChatGPT's API, and whatever is subscribed to ChatGPT's response will be notified as soon as a response is received. Have fun!
 
