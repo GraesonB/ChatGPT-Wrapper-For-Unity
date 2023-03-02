@@ -1,5 +1,5 @@
 # ChatGPT Unity Wrapper
-A Unity wrapper for ChatGPT's official API. This wrapper serves as an easy-to-use tool for those looking to explore ChatGPT applications in game development.
+This wrapper serves as an easy-to-use tool for those looking to explore ChatGPT applications in game development.
 
 ## Guide
 1. Either download the zip and extract it into an existing Unity project, or clone the repo into your project's Assets directory. <br>
