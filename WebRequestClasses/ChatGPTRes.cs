@@ -5,8 +5,6 @@ namespace ChatGPTWrapper {
     [Serializable]
     public class ChatGPTRes
     {
-        public string id;
-        public List<Choices> choices;
-
+        public List<ChatGPTChoices> choices;
     }
 }

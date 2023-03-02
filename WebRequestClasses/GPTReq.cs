@@ -1,5 +1,5 @@
 ﻿namespace ChatGPTWrapper {
-    public class ChatGPTReq
+    public class GPTReq
     {
         public string model;
         public string prompt;

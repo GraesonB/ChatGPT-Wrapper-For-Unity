@@ -33,7 +33,7 @@ namespace ChatGPTWrapper {
                     Debug.LogError("Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.ProtocolError:
-                    Debug.LogError(": HTTP Error: " + webRequest.error);
+                    Debug.LogError("HTTP Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.Success:
                     var responseJson = JsonUtility.FromJson<T>(webRequest.downloadHandler.text);
@@ -77,7 +77,11 @@ namespace ChatGPTWrapper {
                     Debug.LogError("Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.ProtocolError:
-                    Debug.LogError(": HTTP Error: " + webRequest.error);
+                    Debug.LogError("HTTP Error: " + webRequest.error);
+                    if (uri.EndsWith("/completions")) {
+                      var errJson = JsonUtility.FromJson<ChatGPTResError>(webRequest.downloadHandler.text);
+                      Debug.LogError(errJson.error.message);
+                    }
                     break;
                 case UnityWebRequest.Result.Success:
                     var responseJson = JsonUtility.FromJson<T>(webRequest.downloadHandler.text);

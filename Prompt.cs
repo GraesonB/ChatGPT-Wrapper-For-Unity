@@ -12,7 +12,7 @@
 
         public enum Speaker {
             User,
-            ChatGPT
+            Bot
         }
 
         public void AppendText(Speaker speaker, string text)
@@ -23,7 +23,7 @@
                 case Speaker.User:
                     _currentPrompt += " \n User: " + text + " \n " + _chatbotName + ": ";
                     break;
-                case Speaker.ChatGPT:
+                case Speaker.Bot:
                     _currentPrompt += text;
                     break;
             }
