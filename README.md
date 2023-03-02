@@ -1,6 +1,9 @@
 # ChatGPT Unity Wrapper
 This wrapper serves as an easy-to-use tool for those looking to explore ChatGPT applications in game development.
 
+### 🚨 IMPORTANT NOTE 🚨
+In its current state, this wrapper is not suitable for production use. If you ship a game with your API key inside, it has potential to get leaked. I will work on setting up a proxy server template that can be self-hosted or hosted on Cloudflare so you can protect your key, and the server will also be able to pipe your data into a database so you can save your conversations and load them in later. In the mean time, happy prototyping :-)
+
 ## Guide
 1. Either download the zip and extract it into an existing Unity project, or clone the repo into your project's Assets directory. <br>
   If you are using a version of Unity that does not support Unity's UI Toolkit, you can just delete the whole UI folder as it's not required.
