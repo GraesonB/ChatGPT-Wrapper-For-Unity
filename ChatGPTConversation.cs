@@ -14,7 +14,7 @@ namespace ChatGPTWrapper {
             Curie
         }
         [SerializeField]
-        public Model _model = Model.Davinci;
+        public Model _model = Model.ChatGPT;
         private string _selectedModel = null;
         [SerializeField]
         private int _maxTokens = 3072;
