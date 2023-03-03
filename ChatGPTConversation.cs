@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Events;
 
 namespace ChatGPTWrapper {
 
@@ -22,7 +21,7 @@ namespace ChatGPTWrapper {
         [SerializeField]
         private float _temperature = 0.6f;
         
-        private string _uri = "https://api.openai.com/v1/completions";
+        private string _uri;
         private List<(string, string)> _reqHeaders;
         
 
@@ -69,10 +68,20 @@ namespace ChatGPTWrapper {
             }
         }
 
+        public void ResetChat(string initialPrompt) {
+            switch (_model) {
+                case Model.ChatGPT:
+                    _chat = new Chat(initialPrompt);
+                    break;
+                default:
+                    _prompt = new Prompt(_chatbotName, _initialPrompt);
+                    break;
+            }
+        }
+
         public void SendToChatGPT(string message)
         {
             _lastUserMsg = message;
-            // _prompt.AppendText(Prompt.Speaker.User, message);
 
             if (_model == Model.ChatGPT) {
                 _chat.AppendMessage(Chat.Speaker.User, message);
@@ -101,7 +110,6 @@ namespace ChatGPTWrapper {
         private void ResolveChatGPT(ChatGPTRes res)
         {
             _lastChatGPTMsg = res.choices[0].message.content;
-            Debug.Log(_lastChatGPTMsg);
 
             _chat.AppendMessage(Chat.Speaker.ChatGPT, _lastChatGPTMsg);
             chatGPTResponse.Invoke(_lastChatGPTMsg);
