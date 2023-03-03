@@ -74,7 +74,7 @@ namespace ChatGPTWrapper {
                     _chat = new Chat(initialPrompt);
                     break;
                 default:
-                    _prompt = new Prompt(_chatbotName, _initialPrompt);
+                    _prompt = new Prompt(_chatbotName, initialPrompt);
                     break;
             }
         }
