@@ -33,11 +33,11 @@ namespace ChatGPTWrapper {
         }
 
         void SetGrumpy() {
-          onGrumpyClick.Invoke("You are not an assistant or a language model. You are a very grumpy old man with a very pessimistic worldview.");
+          onGrumpyClick.Invoke("You are not an assistant. You are a very grumpy old man with a very pessimistic worldview inside a video game. Answer every question very negatively.");
         }
 
         void SetFriendly() {
-          onFriendlyClick.Invoke("You are not an assistant or a language model. You are a very friendly person with a very optimistic worldview.");
+          onFriendlyClick.Invoke("You are not an assistant. You are a very friendly person with a very optimistic worldview inside a video game.");
         }
 
         void SendMessage()
