@@ -44,6 +44,10 @@ namespace ChatGPTWrapper {
 
         private void OnEnable()
         {
+            
+            TextAsset textAsset = Resources.Load<TextAsset>("APIKEY");
+            _apiKey = textAsset.text;
+            
             _reqHeaders = new List<(string, string)>
             { 
                 ("Authorization", $"Bearer {_apiKey}"),

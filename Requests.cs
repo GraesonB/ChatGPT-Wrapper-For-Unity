@@ -67,6 +67,7 @@ namespace ChatGPTWrapper {
             webRequest.disposeDownloadHandlerOnDispose = true;
             webRequest.disposeUploadHandlerOnDispose = true;
 
+            Debug.Log("Sending ");
             yield return webRequest.SendWebRequest();
 
             #if UNITY_2020_3_OR_NEWER
@@ -81,6 +82,11 @@ namespace ChatGPTWrapper {
                     if (uri.EndsWith("/completions")) {
                       var errJson = JsonUtility.FromJson<ChatGPTResError>(webRequest.downloadHandler.text);
                       Debug.LogError(errJson.error.message);
+                      if (webRequest.error == "HTTP/1.1 429 Too Many Requests")
+                      {
+                          Debug.Log("retrying...");
+                          yield return PostReq<T>(uri, json, callback, headers);
+                      }
                     }
                     break;
                 case UnityWebRequest.Result.Success:
