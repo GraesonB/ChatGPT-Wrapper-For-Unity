@@ -7,6 +7,7 @@ namespace ChatGPTWrapper {
   	{
 		SerializedProperty _apiKey;
 		SerializedProperty _model;
+		SerializedProperty conncetOnStart;
 		SerializedProperty _maxTokens;
 		SerializedProperty _temperature;
 		SerializedProperty _chatbotName;
@@ -18,6 +19,7 @@ namespace ChatGPTWrapper {
 		{
 			_apiKey = serializedObject.FindProperty("_apiKey");
 			_model = serializedObject.FindProperty("_model");
+			conncetOnStart = serializedObject.FindProperty("conncetOnStart");
 			_maxTokens = serializedObject.FindProperty("_maxTokens");
 			_temperature = serializedObject.FindProperty("_temperature");
 			_chatbotName = serializedObject.FindProperty("_chatbotName");
@@ -32,6 +34,8 @@ namespace ChatGPTWrapper {
 			EditorGUILayout.LabelField("Parameters", EditorStyles.boldLabel);
 			EditorGUILayout.PropertyField(_apiKey);
 			EditorGUILayout.PropertyField(_model);
+			
+			EditorGUILayout.PropertyField(conncetOnStart);
 
 			if (_model.enumValueIndex != 0) {
 				EditorGUILayout.PropertyField(_maxTokens);

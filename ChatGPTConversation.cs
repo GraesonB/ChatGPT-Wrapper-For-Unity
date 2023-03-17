@@ -5,25 +5,23 @@ namespace ChatGPTWrapper {
 
     public class ChatGPTConversation : MonoBehaviour
     {
-        [SerializeField]
-        private string _apiKey = null;
+        [SerializeField] private TextAsset  _apiKey = null;
 
-        public enum Model {
+        public enum Model
+        {
             ChatGPT,
             Davinci,
             Curie
         }
-        [SerializeField]
-        public Model _model = Model.ChatGPT;
+
+        [SerializeField] public Model _model = Model.ChatGPT;
         private string _selectedModel = null;
-        [SerializeField]
-        private int _maxTokens = 3072;
-        [SerializeField]
-        private float _temperature = 0.6f;
-        
+        [SerializeField] private int _maxTokens = 3072;
+        [SerializeField] private float _temperature = 0.6f;
+
         private string _uri;
         private List<(string, string)> _reqHeaders;
-        
+
 
         private Requests requests = new Requests();
         private Prompt _prompt;
@@ -31,26 +29,28 @@ namespace ChatGPTWrapper {
         private string _lastUserMsg;
         private string _lastChatGPTMsg;
 
-        [SerializeField]
-        private string _chatbotName = "ChatGPT";
+        [SerializeField] private string _chatbotName = "ChatGPT";
 
-        [TextArea(4,6)]
-        [SerializeField]
-        private string _initialPrompt = "You are ChatGPT, a large language model trained by OpenAI.";
+        [TextArea(4, 6)] [SerializeField]
+        public string _initialPrompt = "You are ChatGPT, a large language model trained by OpenAI.";
 
 
         public UnityStringEvent chatGPTResponse = new UnityStringEvent();
+        [SerializeField] private bool conncetOnStart = true;
 
 
         private void OnEnable()
         {
-            
-            TextAsset textAsset = Resources.Load<TextAsset>("APIKEY");
-            _apiKey = textAsset.text;
-            
+            if (conncetOnStart)
+                Connect();
+        }
+
+        public void Connect()
+        {
+          
             _reqHeaders = new List<(string, string)>
             { 
-                ("Authorization", $"Bearer {_apiKey}"),
+                ("Authorization", $"Bearer {_apiKey.text}"),
                 ("Content-Type", "application/json")
             };
             switch (_model) {
