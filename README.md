@@ -6,7 +6,8 @@ In its current state, this wrapper is not suitable for production use. If you sh
 
 ## Guide
 1. Either download the zip and extract it into an existing Unity project, or clone the repo into your project's Assets directory. <br>
-  If you are using a version of Unity that does not support Unity's UI Toolkit, you can just delete the whole UI folder as it's not required.
+  If you are using a version of Unity that does not support Unity's UI Toolkit, you can just delete the whole UI folder as it's not required. <br>
+  Also you can import package using **Unity Package Manager** (**Add package from Git URL** - https://github.com/GraesonB/ChatGPT-Wrapper-For-Unity.git) or just add "com.graesonb.chat-gpt-wrapper-for-unity": "https://github.com/GraesonB/ChatGPT-Wrapper-For-Unity.git" to **Packages/manifest.json**
 
 2. Create an empty game object, and add the "ChatGPTConversation" script to it.
 ![Screenshot 2023-03-01 at 8 41 26 PM](https://user-images.githubusercontent.com/89364458/222325449-47a833a6-9f10-4583-a78d-69aef54b7e3d.png)
