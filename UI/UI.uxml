@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/ChatGPT-Wrapper-For-Unity/UI/styles.uss?fileID=7433441132597879392&amp;guid=b8b43e675b4894245bde99ef6166a3be&amp;type=3#styles" />
+    <Style src="project://database/Assets/_scripts/ChatGPT-Wrapper-For-Unity/UI/styles.uss?fileID=7433441132597879392&amp;guid=e3ac6910032813243ad2e89db9d9a8d6&amp;type=3#styles" />
     <ui:VisualElement name="container" style="height: 746px; align-items: center; justify-content: flex-end; background-color: rgb(28, 32, 42);">
         <ui:GroupBox style="flex-direction: row; width: 100%; justify-content: center; padding-top: 20px; flex-grow: 0;">
             <ui:Label display-tooltip-when-elided="true" name="chatgpt-text" class="text-input text-box" style="background-color: rgb(49, 56, 72); padding-left: 15px; padding-right: 15px; padding-top: 10px; padding-bottom: 10px; white-space: normal;" />

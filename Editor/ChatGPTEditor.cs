@@ -5,6 +5,8 @@ namespace ChatGPTWrapper {
   	[CustomEditor(typeof(ChatGPTConversation))]
   	public class ChatGPTEditor : Editor
   	{
+        SerializedProperty _useProxy;
+        SerializedProperty _proxyUri;
 		SerializedProperty _apiKey;
 		SerializedProperty _model;
 		SerializedProperty _maxTokens;
@@ -16,6 +18,8 @@ namespace ChatGPTWrapper {
 
 		private void OnEnable() 
 		{
+            _useProxy = serializedObject.FindProperty("_useProxy");
+			_proxyUri = serializedObject.FindProperty("_proxyUri");
 			_apiKey = serializedObject.FindProperty("_apiKey");
 			_model = serializedObject.FindProperty("_model");
 			_maxTokens = serializedObject.FindProperty("_maxTokens");
@@ -30,13 +34,16 @@ namespace ChatGPTWrapper {
 			serializedObject.Update();
 			
 			EditorGUILayout.LabelField("Parameters", EditorStyles.boldLabel);
-			EditorGUILayout.PropertyField(_apiKey);
+            EditorGUILayout.PropertyField(_useProxy);
+            if (_useProxy.boolValue == true) {
+			    EditorGUILayout.PropertyField(_proxyUri);
+            } else {
+			    EditorGUILayout.PropertyField(_apiKey);
+            }
 			EditorGUILayout.PropertyField(_model);
-
-			if (_model.enumValueIndex != 0) {
-				EditorGUILayout.PropertyField(_maxTokens);
-				EditorGUILayout.PropertyField(_temperature);
-			}
+			EditorGUILayout.PropertyField(_maxTokens);
+			EditorGUILayout.PropertyField(_temperature);
+			
 
 			EditorGUILayout.Space(5);
 

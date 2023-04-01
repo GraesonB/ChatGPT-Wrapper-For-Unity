@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
+using Reqs;
 
 namespace ChatGPTWrapper {
     public class UI : MonoBehaviour
