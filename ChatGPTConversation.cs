@@ -8,7 +8,9 @@ namespace ChatGPTWrapper {
     {
         [SerializeField]
         private bool _useProxy = false;
-        
+        [SerializeField]
+        private string _proxyUri = null;
+
         [SerializeField]
         private string _apiKey = null;
 
@@ -21,9 +23,9 @@ namespace ChatGPTWrapper {
         public Model _model = Model.ChatGPT;
         private string _selectedModel = null;
         [SerializeField]
-        private int _maxTokens = 3072;
+        private int _maxTokens = 4096;
         [SerializeField]
-        private float _temperature = 0.6f;
+        private float _temperature = 0.5f;
         
         private string _uri;
         private List<(string, string)> _reqHeaders;
@@ -93,18 +95,31 @@ namespace ChatGPTWrapper {
             _lastUserMsg = message;
 
             if (_model == Model.ChatGPT) {
-                _chat.AppendMessage(Chat.Speaker.User, message);
+                if (_useProxy) {
+                    ProxyReq proxyReq = new ProxyReq();
+                    proxyReq.max_tokens = _maxTokens;
+                    proxyReq.temperature = _temperature;
+                    proxyReq.messages = new List<Message>(_chat.CurrentChat);
+                    proxyReq.messages.Add(new Message("user", message));
 
-                ChatGPTReq reqObj = new ChatGPTReq();
-                reqObj.model = _selectedModel;
-                reqObj.messages = _chat.CurrentChat;
-                reqObj.max_tokens = _maxTokens;
-                reqObj.temperature = _temperature;
-        
-                string json = JsonUtility.ToJson(reqObj);
+                    string proxyJson = JsonUtility.ToJson(proxyReq);
 
-                StartCoroutine(requests.PostReq<ChatGPTRes>(_uri, json, ResolveChatGPT, _reqHeaders));
+                    StartCoroutine(requests.PostReq<ChatGPTRes>(_proxyUri, proxyJson, ResolveChatGPT, _reqHeaders));
+                } else {
+                    ChatGPTReq chatGPTReq = new ChatGPTReq();
+                    chatGPTReq.model = _selectedModel;
+                    chatGPTReq.max_tokens = _maxTokens;
+                    chatGPTReq.temperature = _temperature;
+                    chatGPTReq.messages = _chat.CurrentChat;
+                    chatGPTReq.messages.Add(new Message("user", message));
+            
+                    string chatGPTJson = JsonUtility.ToJson(chatGPTReq);
+                    
+                    StartCoroutine(requests.PostReq<ChatGPTRes>(_uri, chatGPTJson, ResolveChatGPT, _reqHeaders));
+                }
+                
             } else {
+
                 _prompt.AppendText(Prompt.Speaker.User, message);
 
                 GPTReq reqObj = new GPTReq();
@@ -121,7 +136,7 @@ namespace ChatGPTWrapper {
         private void ResolveChatGPT(ChatGPTRes res)
         {
             _lastChatGPTMsg = res.choices[0].message.content;
-
+            _chat.AppendMessage(Chat.Speaker.User, _lastUserMsg);
             _chat.AppendMessage(Chat.Speaker.ChatGPT, _lastChatGPTMsg);
             chatGPTResponse.Invoke(_lastChatGPTMsg);
         }
