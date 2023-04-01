@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using ChatGPTWrapper;
 
-namespace ChatGPTWrapper {
+namespace Reqs {
 
     public class Requests
     {
@@ -67,7 +68,6 @@ namespace ChatGPTWrapper {
             webRequest.disposeDownloadHandlerOnDispose = true;
             webRequest.disposeUploadHandlerOnDispose = true;
 
-            Debug.Log("Sending ");
             yield return webRequest.SendWebRequest();
 
             #if UNITY_2020_3_OR_NEWER
