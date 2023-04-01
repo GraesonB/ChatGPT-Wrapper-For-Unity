@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Reqs;
 
 namespace ChatGPTWrapper {
 
     public class ChatGPTConversation : MonoBehaviour
     {
+        [SerializeField]
+        private bool _useProxy = false;
+        
         [SerializeField]
         private string _apiKey = null;
 
@@ -38,15 +42,16 @@ namespace ChatGPTWrapper {
         [SerializeField]
         private string _initialPrompt = "You are ChatGPT, a large language model trained by OpenAI.";
 
-
         public UnityStringEvent chatGPTResponse = new UnityStringEvent();
-
 
         private void OnEnable()
         {
             
             TextAsset textAsset = Resources.Load<TextAsset>("APIKEY");
-            _apiKey = textAsset.text;
+            if (textAsset != null) {
+                _apiKey = textAsset.text;
+            }
+            
             
             _reqHeaders = new List<(string, string)>
             { 
@@ -93,6 +98,8 @@ namespace ChatGPTWrapper {
                 ChatGPTReq reqObj = new ChatGPTReq();
                 reqObj.model = _selectedModel;
                 reqObj.messages = _chat.CurrentChat;
+                reqObj.max_tokens = _maxTokens;
+                reqObj.temperature = _temperature;
         
                 string json = JsonUtility.ToJson(reqObj);
 
