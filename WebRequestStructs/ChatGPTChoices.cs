@@ -2,8 +2,8 @@
 
 namespace ChatGPTWrapper {
     [Serializable]
-    public class GPTChoices
+    public struct ChatGPTChoices
     {
-        public string text;
+        public Message message;
     }
 }
