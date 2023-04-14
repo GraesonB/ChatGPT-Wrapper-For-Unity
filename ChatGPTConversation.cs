@@ -23,7 +23,7 @@ namespace ChatGPTWrapper {
         public Model _model = Model.ChatGPT;
         private string _selectedModel = null;
         [SerializeField]
-        private int _maxTokens = 4096;
+        private int _maxTokens = 500;
         [SerializeField]
         private float _temperature = 0.5f;
         
